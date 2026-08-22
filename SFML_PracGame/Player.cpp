@@ -13,7 +13,6 @@ Player::Player() : playerSprite(playerIdleTexture), currentFrame(0), animationTi
 
 	attackHitbox.setRadius(attackRadius);
 	attackHitbox.setOrigin({ attackRadius, attackRadius });
-	attackHitbox.setFillColor(sf::Color::Green);
 }
 
 void Player::MovePlayer(sf::Vector2f direction, float deltaTime)
@@ -171,9 +170,4 @@ void Player::AnimatePlayer(float deltaTime)
 void Player::Draw(sf::RenderWindow& window)
 {
 	window.draw(playerSprite);
-
-	if (isAttackHitboxActive)
-	{
-		window.draw(attackHitbox);
-	}
 }
