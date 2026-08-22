@@ -15,6 +15,7 @@ public:
     bool IsAttacking() const;
     bool IsAttackHitboxActive() const;
     sf::FloatRect GetAttackBounds() const;
+    sf::FloatRect GetBounds() const;
     int GetDamageToImpart() const;
 
     void TakeDamage(int damage);

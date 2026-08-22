@@ -40,6 +40,7 @@ void EnemySpawner::Update(sf::Vector2f playerPosition, const sf::Vector2u& windo
 	for (Enemy& enemy : enemies)
 	{
 		enemy.MoveTowardsPlayer(playerPosition, deltaTime);
+		enemy.Update(deltaTime);
 	}
 
 	//---Auto spawn 
@@ -104,9 +105,11 @@ void EnemySpawner::CheckEnemyToPlayerCollision(Player& player)
 {
 	for (Enemy& enemy : enemies)
 	{
-		if (enemy.GetBounds().findIntersection(player.GetAttackBounds()))
+		if (enemy.GetBounds().findIntersection(player.GetBounds()))
 		{
+			enemy.AttackPlayer();
 			player.TakeDamage(enemy.GetDamageToImpart());
+			break;
 		}
 	}
 }

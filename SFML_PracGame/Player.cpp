@@ -37,6 +37,11 @@ sf::FloatRect Player::GetAttackBounds() const
 	return attackHitbox.getGlobalBounds();
 }
 
+sf::FloatRect Player::GetBounds() const
+{
+	return playerSprite.getGlobalBounds();
+}
+
 int Player::GetDamageToImpart() const
 {
 	return attackDamage;

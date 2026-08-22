@@ -12,16 +12,24 @@ private:
 	float moveSpeed = 100.0f;
 	int health = 1;
 	int damage = 1;
+	float attackCooldown = 1.5f;
+	float attackTimer = 0.0f;
+
 
 public:
 	Enums::EnemyTypes CurrentEnemyType;
 
 	void Initialize(sf::Vector2f postion);
 	void MoveTowardsPlayer(sf::Vector2f playerPosition, float deltaTime);
+
+	void Update(float deltaTime);
+
 	void AttackPlayer();
 	bool IsDead() const;
 	void TakeDamage(int damage);
 	int GetDamageToImpart();
+	float GetAttackCooldown();
+	bool CanAttack() const;
 
 	void MoveBy(sf::Vector2f offset);
 

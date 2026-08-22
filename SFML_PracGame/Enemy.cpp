@@ -19,6 +19,19 @@ void Enemy::MoveTowardsPlayer(sf::Vector2f playerPosition, float deltaTime)
 	}
 }
 
+void Enemy::Update(float deltaTime)
+{
+	if (attackTimer < attackCooldown)
+	{
+		attackTimer += deltaTime;
+	}
+}
+
+bool Enemy::CanAttack() const
+{
+	return attackTimer >= attackCooldown;
+}
+
 void Enemy::TakeDamage(int damage)
 {
 	health -= damage;
@@ -29,6 +42,11 @@ int Enemy::GetDamageToImpart()
 	return damage;
 }
 
+float Enemy::GetAttackCooldown()
+{
+	return attackCooldown;
+}
+
 bool Enemy::IsDead() const
 {
 	return health <= 0;
@@ -36,6 +54,7 @@ bool Enemy::IsDead() const
 
 void Enemy::AttackPlayer()
 {
+	attackTimer = 0.0f;
 }
 
 void Enemy::MoveBy(sf::Vector2f offset)
