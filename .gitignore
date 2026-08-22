@@ -1,0 +1,76 @@
+# =========================
+# Visual Studio
+# =========================
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.recipe
+*.lobj
+*.ipdb
+
+# =========================
+# Visual Studio build output
+# =========================
+
+x64/*
+!x64/
+!x64/Debug/
+!x64/Release/
+
+# Keep SFML runtime DLLs
+x64/Debug/*.dll
+x64/Release/*.dll
+
+# Ignore generated executable/debug files
+*.exe
+*.pdb
+*.obj
+*.ilk
+*.lib
+*.exp
+*.tlog
+*.lastbuildstate
+*.pch
+*.ipch
+*.idb
+*.gch
+
+# =========================
+# Rider / CLion
+# =========================
+
+.idea/
+*.iml
+
+# =========================
+# VS Code
+# =========================
+
+.vscode/
+
+# =========================
+# Temporary / backup files
+# =========================
+
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# =========================
+# Logs
+# =========================
+
+*.log
+
+# =========================
+# OS files
+# =========================
+
+.DS_Store
+Thumbs.db
+desktop.ini
