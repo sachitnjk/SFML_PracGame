@@ -17,6 +17,9 @@ public:
     sf::FloatRect GetAttackBounds() const;
     int GetDamageToImpart() const;
 
+    void TakeDamage(int damage);
+    bool IsDead() const;
+
     void SetAnimation(Enums::AnimationStates state);
     void AnimatePlayer(float deltaTime);
     
@@ -38,6 +41,7 @@ private:
     Enums::AnimationStates currentAnimationState = Enums::AnimationStates::Idle;
     Enums::FacingDirection currentFacingDirection = Enums::FacingDirection::Right;
 
+    int  playerHealth = 3;
     float moveSpeed = 300.0f;
 
     int currentFrame = 0;

@@ -20,6 +20,7 @@ public:
     void Update(sf::Vector2f playerPosition, const sf::Vector2u& windowSize, float deltaTime);
 
     void CheckPlayerAttack(const Player& player);
+    void CheckEnemyToPlayerCollision(Player& player);
 
     void Draw(sf::RenderWindow& window);
 };

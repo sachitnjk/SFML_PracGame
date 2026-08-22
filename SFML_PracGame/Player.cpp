@@ -42,6 +42,16 @@ int Player::GetDamageToImpart() const
 	return attackDamage;
 }
 
+void Player::TakeDamage(int damage)
+{
+	playerHealth -= damage;
+}
+
+bool Player::IsDead() const
+{
+	return playerHealth <= 0;
+}
+
 void Player::PerformAttack()
 {
 	if (isAttacking)

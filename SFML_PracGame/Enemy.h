@@ -11,6 +11,7 @@ private:
 	float collisionRadius = 30.0f;
 	float moveSpeed = 100.0f;
 	int health = 1;
+	int damage = 1;
 
 public:
 	Enums::EnemyTypes CurrentEnemyType;
@@ -20,6 +21,7 @@ public:
 	void AttackPlayer();
 	bool IsDead() const;
 	void TakeDamage(int damage);
+	int GetDamageToImpart();
 
 	void MoveBy(sf::Vector2f offset);
 

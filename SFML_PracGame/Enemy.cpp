@@ -24,6 +24,11 @@ void Enemy::TakeDamage(int damage)
 	health -= damage;
 }
 
+int Enemy::GetDamageToImpart()
+{
+	return damage;
+}
+
 bool Enemy::IsDead() const
 {
 	return health <= 0;

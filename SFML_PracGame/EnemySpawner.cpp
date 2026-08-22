@@ -100,6 +100,17 @@ void EnemySpawner::CheckPlayerAttack(const Player& player)
 	}
 }
 
+void EnemySpawner::CheckEnemyToPlayerCollision(Player& player)
+{
+	for (Enemy& enemy : enemies)
+	{
+		if (enemy.GetBounds().findIntersection(player.GetAttackBounds()))
+		{
+			player.TakeDamage(enemy.GetDamageToImpart());
+		}
+	}
+}
+
 void EnemySpawner::Draw(sf::RenderWindow& window)
 {
 	for (Enemy& enemy : enemies)
