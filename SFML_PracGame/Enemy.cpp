@@ -42,11 +42,6 @@ int Enemy::GetDamageToImpart()
 	return damage;
 }
 
-float Enemy::GetAttackCooldown()
-{
-	return attackCooldown;
-}
-
 bool Enemy::IsDead() const
 {
 	return health <= 0;

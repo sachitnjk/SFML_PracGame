@@ -55,6 +55,7 @@ int main()
         }
         enemySpawner.Update(player.GetPosition(), window.getSize(), deltaTime);
         enemySpawner.CheckPlayerAttack(player);
+        enemySpawner.CheckEnemyToPlayerCollision(player);
 
         player.ClampToWindow(window.getSize());
         player.AnimatePlayer(deltaTime);

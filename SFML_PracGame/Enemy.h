@@ -28,7 +28,6 @@ public:
 	bool IsDead() const;
 	void TakeDamage(int damage);
 	int GetDamageToImpart();
-	float GetAttackCooldown();
 	bool CanAttack() const;
 
 	void MoveBy(sf::Vector2f offset);

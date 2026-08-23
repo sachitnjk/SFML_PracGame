@@ -52,7 +52,7 @@ void EnemySpawner::Update(sf::Vector2f playerPosition, const sf::Vector2u& windo
 		spawnTimer = 0.0f;
 	}
 
-	//---Enemy seperation
+	//---Enem dista nce maintain
 	for (int i = 0; i < enemies.size(); i++)
 	{
 		for (int j = i + 1; j < enemies.size(); j++)
@@ -105,7 +105,7 @@ void EnemySpawner::CheckEnemyToPlayerCollision(Player& player)
 {
 	for (Enemy& enemy : enemies)
 	{
-		if (enemy.GetBounds().findIntersection(player.GetBounds()))
+		if (enemy.GetBounds().findIntersection(player.GetBounds()) && enemy.CanAttack())
 		{
 			enemy.AttackPlayer();
 			player.TakeDamage(enemy.GetDamageToImpart());
