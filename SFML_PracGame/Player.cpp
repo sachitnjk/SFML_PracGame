@@ -1,15 +1,19 @@
 #include "Player.h"
 #include <algorithm>
 
-Player::Player() : playerSprite(playerIdleTexture), currentFrame(0), animationTimer(0.0f), frameDuration(0.1f)
+Player::Player() : playerSprite(playerIdleTexture), healthSprite(playerHealthTexture), currentFrame(0), animationTimer(0.0f), frameDuration(0.1f)
 {
 	playerIdleTexture.loadFromFile("Images/Player_Idle.png");
 	playerRunTexture.loadFromFile("Images/Player_Run.png");
 	playerAttackTexture.loadFromFile("Images/Player_Attack.png");
+	playerHealthTexture.loadFromFile("Images/Heart_Red.png");
 
 	playerSprite.setTextureRect(sf::IntRect({ 0, 0 }, { playerFrameWidth, playerFrameHeight }));
 	playerSprite.setOrigin({ playerFrameWidth / 2.0f, playerFrameHeight / 2.0f });
 	playerSprite.setPosition({ 864.f, 444.f });
+
+	healthSprite.setTextureRect(sf::IntRect({ 0, 0 }, { playerHealthWidth, playerHealthHeight }));
+	healthSprite.setScale({ 8.0f, 8.0f });
 
 	attackHitbox.setRadius(attackRadius);
 	attackHitbox.setOrigin({ attackRadius, attackRadius });
@@ -185,4 +189,11 @@ void Player::AnimatePlayer(float deltaTime)
 void Player::Draw(sf::RenderWindow& window)
 {
 	window.draw(playerSprite);
+
+	for (int i = 0; i < playerHealth; i++)
+	{
+		healthSprite.setPosition({ 20.0f + i * 20.0f, 20.0f });
+
+		window.draw(healthSprite);
+	}
 }

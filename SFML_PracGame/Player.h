@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "EnumHolder.h"
+#include <iostream>
 
 class Player
 {
@@ -34,8 +35,10 @@ private:
     sf::Texture playerIdleTexture;
     sf::Texture playerRunTexture;
     sf::Texture playerAttackTexture;
+    sf::Texture playerHealthTexture;
 
     sf::Sprite playerSprite;
+    sf::Sprite healthSprite;
 
     sf::CircleShape attackHitbox;
 
@@ -51,6 +54,9 @@ private:
 
     int playerFrameWidth = 192;
     int playerFrameHeight = 192;
+
+    int playerHealthWidth = 32;
+    int playerHealthHeight = 32;
 
     int currentAnimationFrameCount;
     int playerIdleFrameCount = 8;
