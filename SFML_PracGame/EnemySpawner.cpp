@@ -103,9 +103,15 @@ void EnemySpawner::CheckPlayerAttack(const Player& player)
 
 void EnemySpawner::CheckEnemyToPlayerCollision(Player& player)
 {
+	sf::FloatRect playerBounds = player.GetBounds();
+
+	//---Collision area shrink
+	playerBounds.position += { 64.0f, 64.0f };
+	playerBounds.size -= { 128.0f, 128.0f };
+
 	for (Enemy& enemy : enemies)
 	{
-		if (enemy.GetBounds().findIntersection(player.GetBounds()) && enemy.CanAttack())
+		if (enemy.GetBounds().findIntersection(playerBounds) && enemy.CanAttack())
 		{
 			enemy.AttackPlayer();
 			player.TakeDamage(enemy.GetDamageToImpart());
