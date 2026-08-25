@@ -17,10 +17,12 @@ private:
 
 public:
     void SpawnEnemy(const sf::Vector2u& windowSize);
-    void Update(sf::Vector2f playerPosition, const sf::Vector2u& windowSize, float deltaTime);
+    void Update(const sf::Vector2u& windowSize, float deltaTime);
 
     void CheckPlayerAttack(const Player& player);
     void CheckEnemyToPlayerCollision(Player& player);
+
+    std::vector<Enemy>& GetSpawnedEnemiesRef();
 
     void Draw(sf::RenderWindow& window);
 };

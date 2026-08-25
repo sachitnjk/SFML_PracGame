@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "InputHandler.h"
 #include "EnemySpawner.h"
+#include "EnemyManager.h"
 
 int main()
 {
@@ -9,6 +10,7 @@ int main()
     Player player;
     InputHandler inputHandler;
     EnemySpawner enemySpawner;
+    EnemyManager enemyManager(enemySpawner);
     sf::Clock clock;
 
 
@@ -53,7 +55,11 @@ int main()
         {
             enemySpawner.SpawnEnemy(window.getSize());
         }
-        enemySpawner.Update(player.GetPosition(), window.getSize(), deltaTime);
+
+        enemySpawner.Update(window.getSize(), deltaTime);
+
+        enemyManager.Update(player.GetPosition(), deltaTime);
+
         enemySpawner.CheckPlayerAttack(player);
         enemySpawner.CheckEnemyToPlayerCollision(player);
 

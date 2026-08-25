@@ -35,14 +35,8 @@ void EnemySpawner::SpawnEnemy(const sf::Vector2u& windowSize)
 	enemies.push_back(enemy);
 }
 
-void EnemySpawner::Update(sf::Vector2f playerPosition, const sf::Vector2u& windowSize, float deltaTime)
+void EnemySpawner::Update(const sf::Vector2u& windowSize, float deltaTime)
 {
-	for (Enemy& enemy : enemies)
-	{
-		enemy.MoveTowardsPlayer(playerPosition, deltaTime);
-		enemy.Update(deltaTime);
-	}
-
 	//---Auto spawn 
 	spawnTimer += deltaTime;
 	if (spawnTimer >= spawnInterval && enemies.size() < maxEnemySpawn)
@@ -50,28 +44,6 @@ void EnemySpawner::Update(sf::Vector2f playerPosition, const sf::Vector2u& windo
 		SpawnEnemy(windowSize);
 
 		spawnTimer = 0.0f;
-	}
-
-	//---Enem dista nce maintain
-	for (int i = 0; i < enemies.size(); i++)
-	{
-		for (int j = i + 1; j < enemies.size(); j++)
-		{
-			sf::Vector2f direction = enemies[i].GetPosition() - enemies[j].GetPosition();
-
-			float distance = direction.length();
-			float minimumDistance = enemies[i].GetCollisionRadius() + enemies[j].GetCollisionRadius();
-
-			if (distance < minimumDistance && distance > 0.0f)
-			{
-				direction /= distance;
-
-				float overlap = minimumDistance - distance;
-
-				enemies[i].MoveBy(direction * (overlap * 0.5f));
-				enemies[j].MoveBy(-direction * (overlap * 0.5f));
-			}
-		}
 	}
 }
 
@@ -118,6 +90,11 @@ void EnemySpawner::CheckEnemyToPlayerCollision(Player& player)
 			break;
 		}
 	}
+}
+
+std::vector<Enemy>& EnemySpawner::GetSpawnedEnemiesRef()
+{
+	return enemies;
 }
 
 void EnemySpawner::Draw(sf::RenderWindow& window)
