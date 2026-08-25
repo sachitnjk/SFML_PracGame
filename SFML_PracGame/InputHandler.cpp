@@ -54,13 +54,3 @@ Enums::FacingDirection InputHandler::GetFacingDirection()
 
     return facingDirection;
 }
-
-bool InputHandler::IsEnemyManualSpawnInput()
-{
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q))
-    {
-        return true;
-    }
-
-    return false;
-}

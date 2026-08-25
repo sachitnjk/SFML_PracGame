@@ -36,6 +36,7 @@ private:
     sf::Texture playerRunTexture;
     sf::Texture playerAttackTexture;
     sf::Texture playerHealthTexture;
+    sf::Texture playerDeathTexture;
 
     sf::Sprite playerSprite;
     sf::Sprite healthSprite;
@@ -55,6 +56,9 @@ private:
     int playerFrameWidth = 192;
     int playerFrameHeight = 192;
 
+    int playerDeathFrameWidth = 64;
+    int playerDeathFrameHeight = 64;
+
     int playerHealthWidth = 32;
     int playerHealthHeight = 32;
 
@@ -62,6 +66,7 @@ private:
     int playerIdleFrameCount = 8;
     int playerRunFrameCount = 6;
     int playerAttackFrameCount = 4;
+    int playerDeathFrameCount = 10;
 
     bool isAttacking = false;
     bool isAttackHitboxActive = false;

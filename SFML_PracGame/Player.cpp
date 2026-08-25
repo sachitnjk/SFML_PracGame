@@ -7,6 +7,7 @@ Player::Player() : playerSprite(playerIdleTexture), healthSprite(playerHealthTex
 	playerRunTexture.loadFromFile("Images/Player_Run.png");
 	playerAttackTexture.loadFromFile("Images/Player_Attack.png");
 	playerHealthTexture.loadFromFile("Images/Heart_Red.png");
+	playerDeathTexture.loadFromFile("Images/Dust_Big.png");
 
 	playerSprite.setTextureRect(sf::IntRect({ 0, 0 }, { playerFrameWidth, playerFrameHeight }));
 	playerSprite.setOrigin({ playerFrameWidth / 2.0f, playerFrameHeight / 2.0f });
@@ -54,6 +55,12 @@ int Player::GetDamageToImpart() const
 void Player::TakeDamage(int damage)
 {
 	playerHealth -= damage;
+
+	if (playerHealth <= 0)
+	{
+		//---Trigger death animation
+		SetAnimation(Enums::AnimationStates::Death);
+	}
 }
 
 bool Player::IsDead() const
@@ -145,6 +152,8 @@ void Player::SetAnimation(Enums::AnimationStates state)
 		playerSprite.setTexture(playerAttackTexture);
 		break;
 	case Enums::AnimationStates::Death:
+		currentAnimationFrameCount = playerDeathFrameCount;
+		playerSprite.setTexture(playerDeathTexture);
 		break;
 	default:
 		break;
@@ -162,6 +171,9 @@ void Player::AnimatePlayer(float deltaTime)
 		animationTimer -= frameDuration;
 		currentFrame++;
 
+		int frameWidth = playerFrameWidth;
+		int frameHeight = playerFrameHeight;
+
 		if (currentAnimationState == Enums::AnimationStates::Attack)
 		{
 			isAttackHitboxActive = (currentFrame >= (playerAttackFrameCount / 2) && currentFrame < playerAttackFrameCount);
@@ -176,13 +188,23 @@ void Player::AnimatePlayer(float deltaTime)
 				isAttackHitboxActive = false;
 				isAttacking = false;
 			}
+			else if (currentAnimationState == Enums::AnimationStates::Death)
+			{
+				currentFrame = currentAnimationFrameCount - 1;
+			}
 			else
 			{
 				currentFrame = 0;
 			}
 		}
 
-		playerSprite.setTextureRect(sf::IntRect({ currentFrame * playerFrameWidth, 0 }, { playerFrameWidth, playerFrameHeight }));
+		if (currentAnimationState == Enums::AnimationStates::Death)
+		{
+			frameWidth = playerDeathFrameWidth;
+			frameHeight = playerDeathFrameHeight;
+		}
+
+		playerSprite.setTextureRect(sf::IntRect({ currentFrame * frameWidth, 0 }, { frameWidth, frameHeight }));
 	}
 }
 

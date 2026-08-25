@@ -12,8 +12,6 @@ public:
 
 	Enums::FacingDirection GetFacingDirection();
 
-	bool IsEnemyManualSpawnInput();
-
 private:
 	Enums::FacingDirection facingDirection = Enums::FacingDirection::Right;
 

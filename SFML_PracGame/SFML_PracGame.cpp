@@ -29,7 +29,7 @@ int main()
         float deltaTime = clock.restart().asSeconds();
 
         //---Movement
-        if (!player.IsAttacking())
+        if (!player.IsAttacking() && !player.IsDead())
         {
             sf::Vector2f movementDirection = inputHandler.GetMovementDirection();
             player.SetFacingDirection(inputHandler.GetFacingDirection());
@@ -47,15 +47,9 @@ int main()
         }
 
         //---Attack
-        if (inputHandler.IsAttackPressed())
+        if (inputHandler.IsAttackPressed() && !player.IsDead())
         {
             player.PerformAttack();
-        }
-
-        //---Manual enemy spawn check
-        if (inputHandler.IsEnemyManualSpawnInput())
-        {
-            enemySpawner.SpawnEnemy(window.getSize());
         }
 
         enemySpawner.Update(window.getSize(), deltaTime);
