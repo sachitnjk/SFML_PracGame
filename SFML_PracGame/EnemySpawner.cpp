@@ -47,51 +47,6 @@ void EnemySpawner::Update(const sf::Vector2u& windowSize, float deltaTime)
 	}
 }
 
-void EnemySpawner::CheckPlayerAttack(const Player& player)
-{
-	if (!player.IsAttackHitboxActive())
-	{
-		return;
-	}
-
-	sf::FloatRect attackBounds = player.GetAttackBounds();
-
-	for (auto it = enemies.begin(); it != enemies.end();)
-	{
-		if (attackBounds.findIntersection(it->GetBounds()))
-		{
-			it->TakeDamage(player.GetDamageToImpart());
-
-			if (it->IsDead())
-			{
-				it = enemies.erase(it);
-				continue;
-			}
-		}
-
-		++it;
-	}
-}
-
-void EnemySpawner::CheckEnemyToPlayerCollision(Player& player)
-{
-	sf::FloatRect playerBounds = player.GetBounds();
-
-	//---Collision area shrink
-	playerBounds.position += { 64.0f, 64.0f };
-	playerBounds.size -= { 128.0f, 128.0f };
-
-	for (Enemy& enemy : enemies)
-	{
-		if (enemy.GetBounds().findIntersection(playerBounds) && enemy.CanAttack())
-		{
-			enemy.AttackPlayer();
-			player.TakeDamage(enemy.GetDamageToImpart());
-			break;
-		}
-	}
-}
-
 std::vector<Enemy>& EnemySpawner::GetSpawnedEnemiesRef()
 {
 	return enemies;

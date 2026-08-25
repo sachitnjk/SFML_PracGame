@@ -3,6 +3,7 @@
 #include "InputHandler.h"
 #include "EnemySpawner.h"
 #include "EnemyManager.h"
+#include "CombatManager.h"
 
 int main()
 {
@@ -11,6 +12,7 @@ int main()
     InputHandler inputHandler;
     EnemySpawner enemySpawner;
     EnemyManager enemyManager(enemySpawner);
+    CombatManager combatManager(enemySpawner);
     sf::Clock clock;
 
 
