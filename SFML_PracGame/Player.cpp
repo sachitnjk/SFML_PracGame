@@ -65,6 +65,11 @@ void Player::TakeDamage(int damage)
 	}
 }
 
+float Player::GetCollisionRadius() const
+{
+	return collisionRadius;
+}
+
 bool Player::IsDead() const
 {
 	return playerHealth <= 0;
@@ -162,7 +167,7 @@ void Player::SetAnimation(Enums::AnimationStates state)
 		currentAnimationFrameCount = playerDeathFrameCount;
 
 		currentFrameWidth = playerDeathFrameWidth;
-		currentFrameHeight = playerDeathFrameHeight;
+		currentFrameHeight = playerDeathFrameHeight;  
 
 		playerSprite.setTexture(playerDeathTexture);
 		playerSprite.setOrigin({ currentFrameWidth / 2.0f, currentFrameHeight / 2.0f });

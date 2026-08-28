@@ -20,7 +20,7 @@ public:
 	Enums::EnemyTypes CurrentEnemyType;
 
 	void Initialize(sf::Vector2f postion);
-	void MoveTowardsPlayer(sf::Vector2f playerPosition, float deltaTime);
+	void MoveTowardsPlayer(sf::Vector2f playerPosition, float collisionRadius, float deltaTime);
 
 	void Update(float deltaTime);
 

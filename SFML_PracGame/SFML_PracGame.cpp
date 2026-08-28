@@ -56,7 +56,7 @@ int main()
 
         if (!player.IsDead())
         {
-            enemyManager.Update(player.GetPosition(), deltaTime);
+            enemyManager.Update(player.GetPosition(), player.GetCollisionRadius(), deltaTime);
             combatManager.CheckPlayerAttack(player);
             combatManager.CheckEnemyToPlayerCollision(player);
         }

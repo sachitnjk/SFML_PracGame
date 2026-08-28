@@ -9,7 +9,7 @@ class EnemyManager
 public:
 	EnemyManager(EnemySpawner& enemySpawner);
 
-	void Update(sf::Vector2f playerPosition, float deltaTime);
+	void Update(sf::Vector2f playerPosition, float playerCollisionRadius, float deltaTime);
 
 private:
 

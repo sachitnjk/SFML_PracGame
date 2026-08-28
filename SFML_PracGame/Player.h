@@ -18,6 +18,7 @@ public:
     sf::FloatRect GetAttackBounds() const;
     sf::FloatRect GetBounds() const;
     int GetDamageToImpart() const;
+    float GetCollisionRadius() const;
 
     void TakeDamage(int damage);
     bool IsDead() const;
@@ -71,6 +72,7 @@ private:
     int playerAttackFrameCount = 4;
     int playerDeathFrameCount = 10;
 
+    float collisionRadius = 20.0f;
     bool isAttacking = false;
     bool isAttackHitboxActive = false;
     float attackRadius = 65.0f;

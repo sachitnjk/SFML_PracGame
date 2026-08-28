@@ -3,14 +3,14 @@
 EnemyManager::EnemyManager(EnemySpawner& enemySpawner): enemySpawnerRef(enemySpawner)
 { }
 
-void EnemyManager::Update(sf::Vector2f playerPosition, float deltaTime)
+void EnemyManager::Update(sf::Vector2f playerPosition, float playerCollisionRadius, float deltaTime)
 {
 	std::vector<Enemy>& spawnedEnemiesRef = enemySpawnerRef.GetSpawnedEnemiesRef();
 
 	//---Constant move towards player
 	for(Enemy& enemy : spawnedEnemiesRef)
 	{
-		enemy.MoveTowardsPlayer(playerPosition, deltaTime);
+		enemy.MoveTowardsPlayer(playerPosition, playerCollisionRadius, deltaTime);
 		enemy.Update(deltaTime);
 	}
 

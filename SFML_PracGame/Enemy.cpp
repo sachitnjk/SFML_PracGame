@@ -8,13 +8,16 @@ void Enemy::Initialize(sf::Vector2f postion)
 	enemyShape.setPosition(postion);
 }
 
-void Enemy::MoveTowardsPlayer(sf::Vector2f playerPosition, float deltaTime)
+void Enemy::MoveTowardsPlayer(sf::Vector2f playerPosition, float playerCollisionRadius, float deltaTime)
 {
 	sf::Vector2 direction = playerPosition - enemyShape.getPosition();
 
-	if (direction != sf::Vector2f{ 0.0f, 0.0f })
+	float distance = direction.length();
+	float stopDistance = playerCollisionRadius + collisionRadius;
+
+	if (distance > stopDistance)
 	{
-		direction = direction.normalized();
+		direction /= distance;
 		enemyShape.move(direction * moveSpeed * deltaTime);
 	}
 }
