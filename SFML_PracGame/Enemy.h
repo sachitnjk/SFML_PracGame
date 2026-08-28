@@ -15,7 +15,6 @@ private:
 	float attackCooldown = 1.5f;
 	float attackTimer = 0.0f;
 
-
 public:
 	Enums::EnemyTypes CurrentEnemyType;
 
@@ -35,7 +34,12 @@ public:
 	sf::Vector2f GetPosition() const;
 	float GetCollisionRadius() const;
 
+	int GetExpValue() const;
+
 	sf::FloatRect GetBounds() const;
 	void Draw(sf::RenderWindow& window);
+
+protected:
+	int expValue = 1;
 };
 

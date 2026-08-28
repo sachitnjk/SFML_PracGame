@@ -60,6 +60,11 @@ void Enemy::MoveBy(sf::Vector2f offset)
 	enemyShape.move(offset);
 }
 
+int Enemy::GetExpValue() const
+{
+	return expValue;
+}
+
 sf::Vector2f Enemy::GetPosition() const
 {
 	return enemyShape.getPosition();

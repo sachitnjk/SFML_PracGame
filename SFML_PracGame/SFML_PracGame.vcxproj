@@ -140,6 +140,7 @@
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="EnumHolder.cpp" />
+    <ClCompile Include="ExpCollectable.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SFML_PracGame.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemySpawner.h" />
     <ClInclude Include="EnumHolder.h" />
+    <ClInclude Include="ExpCollectable.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
