@@ -56,6 +56,9 @@ void Player::TakeDamage(int damage)
 {
 	playerHealth -= damage;
 
+	playerSprite.setColor(sf::Color::Red);
+	damageFlashTimer = damageFlashDuration;
+
 	if (playerHealth <= 0)
 	{
 		SetAnimation(Enums::AnimationStates::Death);
@@ -174,6 +177,18 @@ void Player::SetAnimation(Enums::AnimationStates state)
 void Player::AnimatePlayer(float deltaTime)
 {
 	animationTimer += deltaTime;
+
+	//---Damage flash
+	if (damageFlashTimer > 0.0f)
+	{
+		damageFlashTimer -= deltaTime;
+
+		if (damageFlashTimer <= 0.0f)
+		{
+			damageFlashTimer = 0.0f;
+			playerSprite.setColor(sf::Color::White);
+		}
+	}
 
 	if (animationTimer >= frameDuration)
 	{

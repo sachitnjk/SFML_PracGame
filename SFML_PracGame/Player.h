@@ -49,6 +49,9 @@ private:
     int  playerHealth = 3;
     float moveSpeed = 300.0f;
 
+    float damageFlashTimer = 0.0f;
+    float damageFlashDuration = 0.1f;
+
     int currentFrame = 0;
     float animationTimer = 0.0f;
     float frameDuration = 0.1f;
