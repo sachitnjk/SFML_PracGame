@@ -58,7 +58,6 @@ void Player::TakeDamage(int damage)
 
 	if (playerHealth <= 0)
 	{
-		//---Trigger death animation
 		SetAnimation(Enums::AnimationStates::Death);
 	}
 }
@@ -137,6 +136,11 @@ void Player::SetAnimation(Enums::AnimationStates state)
 	currentFrame = 0;
 	animationTimer = 0.0f;
 
+	int currentFrameWidth = playerFrameWidth;
+	int currentFrameHeight = playerFrameHeight;
+
+	playerSprite.setOrigin({playerFrameWidth / 2.0f, playerFrameHeight / 2.0f });
+
 	switch (currentAnimationState)
 	{
 	case Enums::AnimationStates::Idle:
@@ -153,13 +157,18 @@ void Player::SetAnimation(Enums::AnimationStates state)
 		break;
 	case Enums::AnimationStates::Death:
 		currentAnimationFrameCount = playerDeathFrameCount;
+
+		currentFrameWidth = playerDeathFrameWidth;
+		currentFrameHeight = playerDeathFrameHeight;
+
 		playerSprite.setTexture(playerDeathTexture);
+		playerSprite.setOrigin({ currentFrameWidth / 2.0f, currentFrameHeight / 2.0f });
 		break;
 	default:
 		break;
 	}
 
-	playerSprite.setTextureRect(sf::IntRect({ 0, 0 }, { playerFrameWidth, playerFrameHeight }));
+	playerSprite.setTextureRect(sf::IntRect({ 0, 0 }, { currentFrameWidth, currentFrameHeight }));
 }
 
 void Player::AnimatePlayer(float deltaTime)
